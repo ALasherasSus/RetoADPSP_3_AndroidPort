@@ -11,4 +11,5 @@
     <string name="sesionFracaso">Error al iniciar sesión</string>
     <string name="sesionFracasoUsuario">El usuario no existe</string>
     <string name="sesionFracasoContra">La contraseña es incorrecta</string>
+    <string name="registrarse">Registrarse</string>
 </resources>

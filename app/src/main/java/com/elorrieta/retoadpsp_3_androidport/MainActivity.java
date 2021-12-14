@@ -60,4 +60,31 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
+    public void registrarse(View v){
+
+        String usuario=etUsuario.getText().toString();
+        String password=etContra.getText().toString();
+        String cadena="";
+
+        p = getSharedPreferences("sharedprefs", Context.MODE_PRIVATE);
+        String usu2 = p.getString("usuario","");
+        String pass2 = p.getString("password", "");
+
+        if(!usu2.equals(usuario)){
+            cadena=getString(R.string.sesionFracasoUsuario);
+            Toast notificacion= Toast.makeText(this,cadena,Toast.LENGTH_LONG);
+            notificacion.show();
+        }else if(!pass2.equals(password)){
+            cadena=getString(R.string.sesionFracasoContra);
+            Toast notificacion= Toast.makeText(this,cadena,Toast.LENGTH_LONG);
+            notificacion.show();
+        }else{
+            //cadena=getString(R.string.sesionExito);
+            etContra.setText("");
+            Intent i = new Intent(this, MenuPrincipal.class );
+            startActivity(i);
+        }
+
+    }
 }
