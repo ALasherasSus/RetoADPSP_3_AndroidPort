@@ -15,7 +15,7 @@ public class MenuPrincipal extends AppCompatActivity {
     }
 
     public void acercaDe(View v){
-        Intent i = new Intent(this, Registro.class );
+        Intent i = new Intent(this, AcercaDe.class );
         startActivity(i);
     }
 }

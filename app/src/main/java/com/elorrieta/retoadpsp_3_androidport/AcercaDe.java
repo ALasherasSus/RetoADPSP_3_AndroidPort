@@ -10,5 +10,6 @@ public class AcercaDe extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_acerca_de);
+        this.setTitle(getString(R.string.acercaDe));
     }
 }

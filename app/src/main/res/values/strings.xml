@@ -16,4 +16,5 @@
     <string name="registrarse">Registrarse</string>
     <string name="registroContraDesigual">La contraseña no coincide</string>
     <string name="acercaDe">Acerca De</string>
+    <string name="menuPrincipal">Menú Principal</string>
 </resources>
