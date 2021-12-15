@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void login(View v){
-
+        //PROVISIONAL: DEBE CAMBIARSE AL CONECTAR LA APLICACIÓN A LA BASE DE DATOS
         String usuario=etUsuario.getText().toString();
         String password=etContra.getText().toString();
         String cadena="";
@@ -64,7 +64,5 @@ public class MainActivity extends AppCompatActivity {
     public void registrarse(View v){
             Intent i = new Intent(this, Registro.class );
             startActivity(i);
-        }
-
     }
 }

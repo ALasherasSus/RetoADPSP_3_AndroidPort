@@ -1,15 +1,18 @@
 <resources>
     <string name="app_name">RetoADPSP 3: Android Edition</string>
     <string name="sesionUsuario">Nombre de usuario:</string>
-    <string name="introUsuario">Introduzca su nombre de usuario</string>
+    <string name="introUsuario">Introduzca el nombre de usuario</string>
     <string name="sesionContra">Contraseña:</string>
-    <string name="introContra">Introduzca su contraseña</string>
+    <string name="sesionContraRepe">Repetir contraseña:</string>
+    <string name="introContra">Introduzca la contraseña</string>
     <string name="aceptar">Aceptar</string>
     <string name="cancelar">Cancelar</string>
     <string name="salir">Salir</string>
+    <string name="exito">Éxito</string>
     <string name="sesionExito">Sesión iniciada con éxito</string>
     <string name="sesionFracaso">Error al iniciar sesión</string>
     <string name="sesionFracasoUsuario">El usuario no existe</string>
     <string name="sesionFracasoContra">La contraseña es incorrecta</string>
     <string name="registrarse">Registrarse</string>
+    <string name="registroContraDesigual">La contraseña no coincide</string>
 </resources>
