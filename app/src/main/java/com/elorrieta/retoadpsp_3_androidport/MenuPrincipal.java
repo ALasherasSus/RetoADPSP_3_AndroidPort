@@ -14,7 +14,7 @@ public class MenuPrincipal extends AppCompatActivity {
         setContentView(R.layout.activity_menu_principal);
     }
 
-    public void acercaDe(View v){
+    public void dondeEncontrarnos(View v){
         Intent i = new Intent(this, Elorrieta.class );
         startActivity(i);
     }
