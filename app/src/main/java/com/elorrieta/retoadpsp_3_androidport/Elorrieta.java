@@ -44,8 +44,9 @@ public class Elorrieta extends FragmentActivity implements OnMapReadyCallback {
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        LatLng elorrieta = new LatLng(43.28470, -2.96466);
+        mMap.addMarker(new MarkerOptions().position(elorrieta).title("Localización de Elorrieta"));
+        //mMap.moveCamera(CameraUpdateFactory.newLatLng(elorrieta));
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(elorrieta, 15), 5000, null);
     }
 }

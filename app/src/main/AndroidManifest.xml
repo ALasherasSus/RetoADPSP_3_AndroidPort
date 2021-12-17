@@ -34,13 +34,10 @@
             android:exported="false"
             android:label="@string/title_activity_elorrieta" />
         <activity
-            android:name=".AcercaDe"
+            android:name=".MenuPrincipal"
             android:exported="false" />
         <activity
             android:name=".Registro"
-            android:exported="false" />
-        <activity
-            android:name=".MenuPrincipal"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
