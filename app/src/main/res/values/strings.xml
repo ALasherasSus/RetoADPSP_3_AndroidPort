@@ -21,6 +21,5 @@
     <string name="menuPrincipal">Menú Principal</string>
     <string name="title_activity_elorrieta">Elorrieta</string>
     <string name="title_activity_actual">Actual</string>
-    <string name="google_maps_key">AIzaSyDT9LklbTU4fKU_dJ09DqMYBA3nhxTxkDM</string>
     <string name="title_activity_posicion_actual">PosicionActual</string>
 </resources>
