@@ -18,4 +18,9 @@ public class MenuPrincipal extends AppCompatActivity {
         Intent i = new Intent(this, Elorrieta.class );
         startActivity(i);
     }
+
+    public void tuPosicion(View v){
+        Intent i = new Intent(this, PosicionActual.class );
+        startActivity(i);
+    }
 }

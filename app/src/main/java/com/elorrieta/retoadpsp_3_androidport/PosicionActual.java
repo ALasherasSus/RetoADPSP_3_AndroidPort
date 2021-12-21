@@ -1,7 +1,13 @@
 package com.elorrieta.retoadpsp_3_androidport;
 
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
+import android.location.Criteria;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -43,11 +49,25 @@ public class PosicionActual extends FragmentActivity implements OnMapReadyCallba
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
-        LatLng actual = new LatLng(43.28470, -2.96466);
+        LocationManager service = (LocationManager) getSystemService(LOCATION_SERVICE);
+        Criteria criteria = new Criteria();
+        String provider = service.getBestProvider(criteria, false);
 
-        mMap.addMarker(new MarkerOptions().position(actual).title("Localización Actual"));
-        //mMap.moveCamera(CameraUpdateFactory.newLatLng(actual));
-        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(actual, 15), 5000, null);
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        Location location = service.getLastKnownLocation(provider);
+
+        LatLng userLocation = new LatLng(location.getLatitude(),location.getLongitude());
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(userLocation));
+        mMap.setMinZoomPreference(15);
+        mMap.addMarker(new MarkerOptions().position(userLocation).title("Ubicacion actual inicial"));
     }
 }
