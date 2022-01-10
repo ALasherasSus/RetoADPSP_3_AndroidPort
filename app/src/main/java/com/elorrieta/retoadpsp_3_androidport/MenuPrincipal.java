@@ -1,9 +1,15 @@
 package com.elorrieta.retoadpsp_3_androidport;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 
 public class MenuPrincipal extends AppCompatActivity {
@@ -22,5 +28,18 @@ public class MenuPrincipal extends AppCompatActivity {
     public void tuPosicion(View v){
         Intent i = new Intent(this, PosicionActual.class );
         startActivity(i);
+    }
+    public void camara(View v){
+        int permissionCheck = ContextCompat.checkSelfPermission(
+                this, Manifest.permission.CAMERA);
+        if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
+            Log.i("Mensaje", "No se tiene permiso para la camara!.");
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, 225);
+        } else {
+            Log.i("Mensaje", "Tienes permiso para usar la camara.");
+            Intent intent=new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            startActivity(intent);
+        }
+
     }
 }
