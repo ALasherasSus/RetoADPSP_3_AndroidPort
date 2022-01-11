@@ -10,6 +10,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
+
 public class MainActivity extends AppCompatActivity {
     private EditText etUsuario;
     private EditText etContra;
@@ -29,6 +32,30 @@ public class MainActivity extends AppCompatActivity {
             editor.putString("password", "darki");
             editor.apply();
         }
+        YoYo.with(Techniques.FadeIn)
+                .duration(900)
+                .repeat(1)
+                .playOn(findViewById(R.id.etUsuario));
+        YoYo.with(Techniques.FadeIn)
+                .duration(900)
+                .repeat(1)
+                .playOn(findViewById(R.id.etContra));
+        YoYo.with(Techniques.FadeIn)
+                .duration(900)
+                .repeat(1)
+                .playOn(findViewById(R.id.button));
+        YoYo.with(Techniques.FadeIn)
+                .duration(900)
+                .repeat(1)
+                .playOn(findViewById(R.id.button2));
+        YoYo.with(Techniques.FadeIn)
+                .duration(900)
+                .repeat(1)
+                .playOn(findViewById(R.id.tvUsuario));
+        YoYo.with(Techniques.FadeIn)
+                .duration(900)
+                .repeat(1)
+                .playOn(findViewById(R.id.tvContra));
 
         etUsuario=(EditText)findViewById(R.id.etUsuario);
         etContra=(EditText)findViewById(R.id.etContra);
@@ -48,10 +75,18 @@ public class MainActivity extends AppCompatActivity {
             cadena=getString(R.string.sesionFracasoUsuario);
             Toast notificacion= Toast.makeText(this,cadena,Toast.LENGTH_LONG);
             notificacion.show();
+            YoYo.with(Techniques.Tada)
+                    .duration(700)
+                    .repeat(1)
+                    .playOn(findViewById(R.id.etUsuario));
         }else if(!pass2.equals(password)){
             cadena=getString(R.string.sesionFracasoContra);
             Toast notificacion= Toast.makeText(this,cadena,Toast.LENGTH_LONG);
             notificacion.show();
+            YoYo.with(Techniques.Tada)
+                    .duration(700)
+                    .repeat(1)
+                    .playOn(findViewById(R.id.etContra));
         }else{
             //cadena=getString(R.string.sesionExito);
             etContra.setText("");
