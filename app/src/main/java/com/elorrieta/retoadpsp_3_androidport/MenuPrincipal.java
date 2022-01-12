@@ -13,11 +13,16 @@ import android.util.Log;
 import android.view.View;
 
 public class MenuPrincipal extends AppCompatActivity {
+    String usuario;
+    String contraseña;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_principal);
+        Bundle bundle = getIntent().getExtras();
+        usuario=bundle.getString("Usuario");
+        contraseña=bundle.getString("Contraseña");
     }
 
     public void dondeEncontrarnos(View v){
@@ -40,6 +45,12 @@ public class MenuPrincipal extends AppCompatActivity {
             Intent intent=new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
             startActivity(intent);
         }
-
     }
+    public void basedeDatos(View v){
+            Intent i = new Intent(this, ConexionBBDD.class );
+            i.putExtra("Usuario", usuario);
+            i.putExtra("Contraseña", contraseña);
+            startActivity(i);
+        }
+
 }

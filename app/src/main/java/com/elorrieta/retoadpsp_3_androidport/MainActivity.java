@@ -28,8 +28,8 @@ public class MainActivity extends AppCompatActivity {
         String usu = p.getString("usuario","");
         String pass = p.getString("password","");
         if (usu == "" && pass == "") {
-            editor.putString("usuario", "arki");
-            editor.putString("password", "darki");
+            editor.putString("usuario", "Admin");
+            editor.putString("password", "12345");
             editor.apply();
         }
         YoYo.with(Techniques.FadeIn)
@@ -89,9 +89,12 @@ public class MainActivity extends AppCompatActivity {
                     .playOn(findViewById(R.id.etContra));
         }else{
             //cadena=getString(R.string.sesionExito);
-            etContra.setText("");
+
             Intent i = new Intent(this, MenuPrincipal.class );
+            i.putExtra("Usuario", etUsuario.getText().toString());
+            i.putExtra("Contraseña", etContra.getText().toString());
             startActivity(i);
+            etContra.setText("");
         }
 
     }
