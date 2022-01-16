@@ -39,8 +39,7 @@ dependencies {
     implementation 'com.google.android.gms:play-services-maps:18.0.1'
     implementation 'com.ramotion.garlandview:garland-view:0.3.3'
     implementation 'com.daimajia.androidanimations:library:2.4@aar'
-    implementation fileTree(dir: 'C:\\Users\\in2dam\\Downloads\\mysql-connector-java-5.1.46', include: ['*.aar', '*.jar'], exclude: [])
-    implementation files('mysql-connector-java-5.1.46.jar')
+    implementation fileTree(dir: 'C:\\Users\\David\\eclipse-workspace\\RetoADPSP_3_AndroidPort\\app\\src\\lib', include: ['*.aar', '*.jar'], exclude: [])
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'

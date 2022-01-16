@@ -22,4 +22,23 @@
     <string name="title_activity_elorrieta">Elorrieta</string>
     <string name="title_activity_actual">Actual</string>
     <string name="title_activity_posicion_actual">PosicionActual</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_consultas_sql">ConsultasSQL</string>
+    <string name="cabecera">Consultas sobre Base de Datos</string>
+    <string name="servidor">Servidor:</string>
+    <string name="puerto">Puerto:</string>
+    <string name="bd">Base de Datos:</string>
+    <string name="usuario">Usuario:</string>
+    <string name="pass">Contraseña:</string>
+    <string name="vacio">Sin datos</string>
+    <string name="consulta">Introducir Consulta Transact-SQL</string>
+    <string name="botonConsulta">Ejecutar Consulta</string>
+    <string name="resultado">Resultados de la consulta "Select"</string>
+    <string name="logo">Logo Academia Android</string>
+    <string name="cabeceraMain">Conectar a MySQL</string>
+    <string name="dirServidor">Dirección Servidor</string>
+    <string name="numPuerto">Nº Puerto</string>
+    <string name="mainUsuario">Usuario</string>
+    <string name="mainPass">Contraseña</string>
+    <string name="mainConex">Abrir Conexión</string>
 </resources>
