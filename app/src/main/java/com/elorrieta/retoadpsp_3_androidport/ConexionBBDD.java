@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ public class ConexionBBDD extends Activity {
     private String baseDatos = "euskmet3";
     String user;
     String password;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,7 +69,7 @@ public class ConexionBBDD extends Activity {
     //o falso para la petición de conexión
     public void abrirConexion(View view)
     {
-        Intent intent = new Intent(this,ConsultaBD.class);
+        Intent intent = new Intent(this,MenuBD.class);
         /*Si el valor devuelto por la función es true, pasaremos los datos de la conexión a la siguiente Activity.*/
         if(conectarMySQL())
         {

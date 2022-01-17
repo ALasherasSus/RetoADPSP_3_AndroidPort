@@ -22,6 +22,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RetoADPSP_3_AndroidPort">
         <activity
+            android:name=".MenuBD"
+            android:exported="true" />
+        <activity
+            android:name=".SubirFotoBD"
+            android:exported="true" />
+        <activity
             android:name=".ConsultaBD"
             android:exported="false" />
 
