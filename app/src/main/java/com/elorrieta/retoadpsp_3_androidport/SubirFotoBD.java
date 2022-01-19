@@ -36,128 +36,96 @@ import java.util.Map;
 
 public class SubirFotoBD extends AppCompatActivity {
 
-    private Button btnBuscar;
+
     private Button btnSubir;
-
     private ImageView imageView;
+    Bitmap bitmap;
+    private String[] datosConexion = null;
 
-    private EditText editTextName;
+    String servidor;
+    String puerto;
+    String usuario;
+    String password;
+    String bd;
+    String currentPhotoPath;
+    byte[] byteArray;
 
-    private Bitmap bitmap;
-
-    private int PICK_IMAGE_REQUEST = 1;
-
-    private String UPLOAD_URL ="10.0.2.2";
-
-    private String KEY_IMAGEN = "foto";
-    private String KEY_NOMBRE = "nombre";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_subir_foto_bd);
 
-        btnBuscar = (Button) findViewById(R.id.btnBuscar);
         btnSubir = (Button) findViewById(R.id.btnSubir);
-
-        editTextName = (EditText) findViewById(R.id.editText);
-
         imageView  = (ImageView) findViewById(R.id.imageView);
 
+        Bundle bundle = getIntent().getExtras();
+        servidor = bundle.getString("servidor");
+        puerto=(bundle.getString("puerto"));
+        usuario=(bundle.getString("usuario"));
+        password=(bundle.getString("password"));
+        bd=(bundle.getString("datos"));
+        currentPhotoPath=(bundle.getString("url"));
+        Uri uri=(bundle.getParcelable("uri"));
+
+        try {
+            bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(),uri);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        imageView.setImageBitmap(bitmap);
 
 
 
-    //    byte[] byteArray = getIntent().getByteArrayExtra("imagen");
-      //  bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
+
+
     }
 
-    public String getStringImagen(Bitmap bmp){
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        bmp.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-        byte[] imageBytes = baos.toByteArray();
-        String encodedImage = Base64.encodeToString(imageBytes, Base64.DEFAULT);
-        return encodedImage;
-    }
+    public void mostrarResultados(View view) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
+        /*Bitmap imgBitmap= BitmapFactory.decodeFile(currentPhotoPath);
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+        byteArray = stream.toByteArray();*/
 
-    private void uploadImage(View view){
-        //Mostrar el diálogo de progreso
-        final ProgressDialog loading = ProgressDialog.show(this,"Subiendo...","Espere por favor...",false,false);
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, UPLOAD_URL,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String s) {
-                        //Descartar el diálogo de progreso
-                        loading.dismiss();
-                        //Mostrando el mensaje de la respuesta
-                        Toast.makeText(SubirFotoBD.this, s , Toast.LENGTH_LONG).show();
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError volleyError) {
-                        //Descartar el diálogo de progreso
-                        loading.dismiss();
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
 
-                        //Showing toast
-                        Toast.makeText(SubirFotoBD.this, volleyError.getMessage().toString(), Toast.LENGTH_LONG).show();
-                    }
-                }){
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                //Convertir bits a cadena
-                String imagen = getStringImagen(bitmap);
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
 
-                //Obtener el nombre de la imagen
-                String nombre = editTextName.getText().toString().trim();
+        byte[] bytes = byteArrayOutputStream.toByteArray();
 
-                //Creación de parámetros
-                Map<String,String> params = new Hashtable<String, String>();
+        String myl = Base64.encodeToString(bytes, Base64.DEFAULT);
 
-                //Agregando de parámetros
-                params.put(KEY_IMAGEN, imagen);
-                params.put(KEY_NOMBRE, nombre);
 
-                //Parámetros de retorno
-                return params;
-            }
-        };
 
-        //Creación de una cola de solicitudes
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        String consulta = "INSERT INTO informacion(idUsuario,foto) values ("+1+","+myl+")";
+        String[] resultadoSQL = null;
+        try{
 
-        //Agregar solicitud a la cola
-        requestQueue.add(stringRequest);
-    }
+                datosConexion = new String[]{
+                        servidor,
+                        puerto,
+                        bd,
+                        usuario,
+                        password,
+                        consulta};
 
-    private void showFileChooser(View view) {
-        int permissionCheck = ContextCompat.checkSelfPermission(
-                this, Manifest.permission.READ_EXTERNAL_STORAGE);
-        if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 225);
-        } else {
-            Intent intent = new Intent();
-            intent.setType("image/*");
-            intent.setAction(Intent.ACTION_GET_CONTENT);
-            startActivityForResult(Intent.createChooser(intent, "Select Imagen"), PICK_IMAGE_REQUEST);
+                //Asignamos el driver a una variable de tipo String
+                String driver = "com.mysql.jdbc.Driver";
+                //Cargamos el driver del conector JDBC
+                Class.forName(driver).newInstance ();
+                resultadoSQL = new CargarFotoAsincrona().execute(datosConexion).get();
+                Toast.makeText(SubirFotoBD.this,"Conexión Establecida", Toast.LENGTH_LONG).show();
+        }catch(Exception ex) {
+            Toast.makeText(this, "Error al obtener resultados de la consulta Transact-SQL: "
+                    + ex.getMessage(), Toast.LENGTH_LONG).show();
         }
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
-            Uri filePath = data.getData();
-            try {
-                //Cómo obtener el mapa de bits de la Galería
-                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
-                //Configuración del mapa de bits en ImageView
-                imageView.setImageBitmap(bitmap);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
+
+
+
+
 
 
 }

@@ -33,7 +33,7 @@ public class MenuBD extends AppCompatActivity {
     String datos;
     String currentPhotoPath;
     byte[] byteArray;
-
+    Uri fotoUri;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,8 +78,13 @@ public class MenuBD extends AppCompatActivity {
         i.putExtra("usuario", user);
         i.putExtra("password", password);
         i.putExtra("datos", datos);
-       // i.putExtra("imagen",byteArray );
-        startActivity(i);
+        i.putExtra("url",currentPhotoPath );
+        i.putExtra("uri",fotoUri );
+        try {
+            startActivity(i);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
     private void abrirCamara() {
         Intent intent=new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -93,7 +98,7 @@ public class MenuBD extends AppCompatActivity {
             Log.e("Error",e.toString());
         }
         if(imagenArchivo !=null){
-            Uri fotoUri = FileProvider.getUriForFile(this,"com.cdp.camara.fileprovider",imagenArchivo);
+            fotoUri = FileProvider.getUriForFile(this,"com.cdp.camara.fileprovider",imagenArchivo);
             intent.putExtra(MediaStore.EXTRA_OUTPUT,fotoUri);
             startActivityForResult(intent,1);
         }
