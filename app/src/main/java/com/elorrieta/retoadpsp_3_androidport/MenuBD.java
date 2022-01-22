@@ -17,6 +17,7 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -34,6 +35,8 @@ public class MenuBD extends AppCompatActivity {
     String currentPhotoPath;
     byte[] byteArray;
     Uri fotoUri;
+    Button subir;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +49,8 @@ public class MenuBD extends AppCompatActivity {
         puerto=bundle.getString("puerto");
         datos=bundle.getString("datos");
 
-
+        subir = (Button)findViewById(R.id.btnSubirFoto);
+        subir.setEnabled(false);
         (findViewById(R.id.btnCamara)).setOnClickListener(V -> {
 
             int permissionCheck = ContextCompat.checkSelfPermission(
@@ -103,7 +107,7 @@ public class MenuBD extends AppCompatActivity {
             startActivityForResult(intent,1);
         }
         startActivityForResult(intent,1);
-
+        subir.setEnabled(true);
         // }
 
     }
@@ -138,6 +142,23 @@ public class MenuBD extends AppCompatActivity {
         currentPhotoPath = image.getAbsolutePath();
         return image;
 
+    }
+
+
+    public void Filtro(View view){
+        Intent i = new Intent(this, Municipio.class );
+        i.putExtra("servidor", servidor);
+        i.putExtra("puerto", puerto);
+        i.putExtra("usuario", user);
+        i.putExtra("password", password);
+        i.putExtra("datos", datos);
+        i.putExtra("url",currentPhotoPath );
+        i.putExtra("uri",fotoUri );
+        try {
+            startActivity(i);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
 }

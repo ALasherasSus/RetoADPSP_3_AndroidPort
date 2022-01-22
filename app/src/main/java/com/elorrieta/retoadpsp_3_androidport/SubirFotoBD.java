@@ -85,7 +85,7 @@ public class SubirFotoBD extends AppCompatActivity {
         /*Bitmap imgBitmap= BitmapFactory.decodeFile(currentPhotoPath);
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-        byteArray = stream.toByteArray();
+        byteArray = stream.toByteArray();*/
 
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
 
@@ -93,17 +93,11 @@ public class SubirFotoBD extends AppCompatActivity {
 
         byte[] bytes = byteArrayOutputStream.toByteArray();
 
-        String myl = Base64.encodeToString(bytes, Base64.DEFAULT);*/
+        String myl = Base64.encodeToString(bytes, Base64.DEFAULT);
 
-        Bitmap bitmap = params[0];
-        String uploadImage = getStringImage(bitmap);
 
-        HashMap<String,String> data = new HashMap<>();
-        data.put(UPLOAD_KEY, uploadImage);
 
-        String result = rh.sendPostRequest(UPLOAD_URL,data);
-
-        String consulta = "INSERT INTO informacion(idInformacion, idUsuario,Foto,Espacio,Pueblo,Favorito) VALUES(NULL,1, "+byteArray+",NULL,NULL,NULL)";
+        String consulta = "INSERT INTO informacion(idInformacion, idUsuario,Foto,Espacio,Pueblo,Favorito) VALUES(NULL,1, '"+currentPhotoPath+"',NULL,NULL,NULL)";
         String[] resultadoSQL = null;
         try{
 

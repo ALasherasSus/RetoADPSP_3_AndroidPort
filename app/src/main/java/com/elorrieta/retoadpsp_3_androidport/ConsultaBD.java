@@ -9,6 +9,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.os.Bundle;
 
+import java.util.ArrayList;
+
 public class ConsultaBD extends Activity {
 
     private TextView txtBaseDatos,txtPuerto,txtServidor,txtUsuario,txtPass;
@@ -54,6 +56,7 @@ public class ConsultaBD extends Activity {
     //Evento On Click que conecta con el servidor MySQL y procesa las consultas mostrando los resultados
     public void mostrarResultados(View view)
     {
+        ArrayList<String> NombreP = new ArrayList<>();
         String consulta = edConsulta.getText().toString();
         String[] resultadoSQL = null;
         try{
