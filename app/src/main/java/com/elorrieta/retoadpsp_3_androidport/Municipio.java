@@ -2,20 +2,19 @@ package com.elorrieta.retoadpsp_3_androidport;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class Municipio extends AppCompatActivity {
 
-    private String txtBaseDatos,txtPuerto,txtServidor,txtUsuario,txtPass,Consulta;
+    private String txtBaseDatos,txtPuerto,txtServidor,txtUsuario,txtPass,Consulta,Ubicacion,NombreUbicacion;
 
     private ListView TextTarea;
 
@@ -37,8 +36,39 @@ public class Municipio extends AppCompatActivity {
         txtUsuario=(bundle.getString("usuario"));
         txtPass=(bundle.getString("password"));
         txtBaseDatos=(bundle.getString("datos"));
-    }
 
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, Nombre);
+        TextTarea.setAdapter(adapter);
+
+        TextTarea.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView adapterView, View view, int i, long l) {
+                NombreUbicacion = (String) TextTarea.getItemAtPosition(i);
+                Ubicacion= Consulta;
+                siguiente();
+            }
+
+
+        });
+    }
+    public void siguiente(){
+        if (Ubicacion.equals("Select Nombre from Pueblo")) {
+            Intent i = new Intent(this, Pueblo.class);
+
+            i.putExtra("Nombre", NombreUbicacion);
+            i.putExtra("Ubicacion", Ubicacion);
+            i.putExtra("servidor", txtServidor);
+            i.putExtra("puerto", txtPuerto);
+            i.putExtra("usuario", txtUsuario);
+            i.putExtra("password", txtPass);
+            i.putExtra("datos", txtBaseDatos);
+            startActivity(i);
+        }else{
+            Intent i = new Intent(this, GPS.class);
+            i.putExtra("Ubicacion", Ubicacion);
+            startActivity(i);
+        }
+    }
 
     public void Pueblo(View view){
         Consulta="Select Nombre from Pueblo";
@@ -76,13 +106,8 @@ public class Municipio extends AppCompatActivity {
                 resultadoSQL = new FiltroAsincrono().execute(datosConexion).get();
                 Toast.makeText(Municipio.this,"Conexión Establecida", Toast.LENGTH_LONG).show();
 
-
-
-
                     ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, resultadoSQL);
                     TextTarea.setAdapter(adapter);
-
-
 
             }
         }catch(Exception ex)

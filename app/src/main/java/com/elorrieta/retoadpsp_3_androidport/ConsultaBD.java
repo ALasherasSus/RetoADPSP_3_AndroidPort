@@ -17,7 +17,7 @@ public class ConsultaBD extends Activity {
     private EditText edConsulta, edResultado;
     private Bundle bundle;
     private String[] datosConexion = null;
-
+    String Tipo;
 
 
     @Override
@@ -44,6 +44,8 @@ public class ConsultaBD extends Activity {
         txtUsuario.setText(bundle.getString("usuario"));
         txtPass.setText(bundle.getString("password"));
         txtBaseDatos.setText(bundle.getString("datos"));
+
+        Tipo="CONSULTA";
     }
 
     public void consultaSelect(View view)
@@ -71,7 +73,8 @@ public class ConsultaBD extends Activity {
                         txtBaseDatos.getText().toString(),
                         txtUsuario.getText().toString(),
                         txtPass.getText().toString(),
-                        consulta
+                        consulta,
+                        Tipo
                 };
                 //Asignamos el driver a una variable de tipo String
                 String driver = "com.mysql.jdbc.Driver";

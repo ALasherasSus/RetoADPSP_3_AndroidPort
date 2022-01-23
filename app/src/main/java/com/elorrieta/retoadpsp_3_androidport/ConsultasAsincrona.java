@@ -30,6 +30,7 @@ public class ConsultasAsincrona extends AsyncTask<String[],Void,String[]>
         String BD = datos[0][2];
         String USUARIO = datos[0][3];
         String PASSWORD = datos[0][4];
+        String TIPO=datos[0][6];
 
         try{
             /*Establecemos la conexión con el Servidor MySQL indicándole la cadena de conexión formada por la dirección ip,
@@ -51,16 +52,40 @@ public class ConsultasAsincrona extends AsyncTask<String[],Void,String[]>
             {
                 rs.beforeFirst();
                 //Búcle encargado de recorrer y mostrar los resultados a partir de la consulta ejecutada
-                while (rs.next())
-                {
-                    resultadoSQL += "ID Diario-> " + rs.getString(1) +
-                            "\nID Estacion-> " + rs.getString(2) +
-                            "\nFecha-> " + rs.getString(3) +
-                            "\n NO " + rs.getString(4) +
-                            "\n NO2 " + rs.getString(5) +
-                            "\n NOX " + rs.getString(6) +
-                            "\n PM10 " + rs.getString(7) +
-                            ";\n";
+
+                if(TIPO.equals("CONSULTA")) {
+                    while (rs.next()) {
+                        resultadoSQL += "ID Diario-> " + rs.getString(1) +
+                                "\nID Estacion-> " + rs.getString(2) +
+                                "\nFecha-> " + rs.getString(3) +
+                                "\n NO " + rs.getString(4) +
+                                "\n NO2 " + rs.getString(5) +
+                                "\n NOX " + rs.getString(6) +
+                                "\n PM10 " + rs.getString(7) +
+                                "\n 03 " + rs.getString(8) +
+                                "\n 038H " + rs.getString(9) +
+                                "\n PM25 " + rs.getString(10) +
+                                "\n S02 " + rs.getString(11) +
+                                "\n ***********************" +
+                                "\n";
+                    }
+                }else if(TIPO.equals("Pueblo")){
+                    while (rs.next()) {
+                        resultadoSQL += "Nombre: " + rs.getString(1) +
+                                "\nDescripcion: " + rs.getString(2) +
+                                "\nLocalidad: " + rs.getString(3) +
+                                "\nidProvincia:" + rs.getString(4) +
+                                "\nidPueblo:" + rs.getString(5) +
+                                "\n ***********************" +
+                                "\n";
+                    }
+                }else{
+                    while (rs.next()) {
+                        resultadoSQL += "idProvincia " + rs.getString(1) +
+                                "\nNombre " + rs.getString(2) +
+                                "\n ***********************" +
+                                "\n";
+                    }
                 }
                 //Variable que almacenará el número de columnas obtenidas de la consulta Transact-SQL
                 numColumnas = rs.getMetaData().getColumnCount();
