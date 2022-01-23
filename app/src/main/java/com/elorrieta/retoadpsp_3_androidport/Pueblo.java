@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -14,10 +15,11 @@ import java.util.ArrayList;
 
 public class Pueblo extends Activity {
 
-    private String txtBaseDatos,txtPuerto,txtServidor,txtUsuario,txtPass,Pueblo,Tipo;
+    private String txtBaseDatos,txtPuerto,txtServidor,txtUsuario,txtPass,Pueblo,Tipo,Consulta;
     private EditText edResultado;
     private Bundle bundle;
     private String[] datosConexion = null;
+    private Button gps;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,8 +33,20 @@ public class Pueblo extends Activity {
         txtPass=(bundle.getString("password"));
         txtBaseDatos=(bundle.getString("datos"));
         Pueblo=(bundle.getString("Nombre"));
+        Consulta=(bundle.getString("Ubicacion"));
         edResultado = (EditText)findViewById(R.id.edResultado);
-        Tipo="Pueblo";
+
+        gps = (Button)findViewById(R.id.btnGPS);
+
+
+
+        if (Consulta.equals("Select Nombre from Pueblo")){
+            Tipo="Pueblo";
+        }else{
+            Tipo="Poblacion";
+            gps.setEnabled(false);
+        }
+
 
         mostrarResultados();
     }
@@ -46,7 +60,13 @@ public class Pueblo extends Activity {
     public void mostrarResultados()
     {
         ArrayList<String> NombreP = new ArrayList<>();
-        String consulta ="Select * from Pueblo where Nombre= '"+Pueblo+"'";
+        String consulta;
+        if (Consulta.equals("Select Nombre from Pueblo")){
+            consulta ="Select * from Pueblo where Nombre= '"+Pueblo+"'";
+        }else{
+            consulta ="Select * from Provincia where Nombre= '"+Pueblo+"'";
+        }
+
         String[] resultadoSQL = null;
         try{
             if(consulta.equals(""))

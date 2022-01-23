@@ -52,7 +52,7 @@ public class Municipio extends AppCompatActivity {
         });
     }
     public void siguiente(){
-        if (Ubicacion.equals("Select Nombre from Pueblo")) {
+
             Intent i = new Intent(this, Pueblo.class);
 
             i.putExtra("Nombre", NombreUbicacion);
@@ -63,11 +63,7 @@ public class Municipio extends AppCompatActivity {
             i.putExtra("password", txtPass);
             i.putExtra("datos", txtBaseDatos);
             startActivity(i);
-        }else{
-            Intent i = new Intent(this, GPS.class);
-            i.putExtra("Ubicacion", Ubicacion);
-            startActivity(i);
-        }
+
     }
 
     public void Pueblo(View view){
