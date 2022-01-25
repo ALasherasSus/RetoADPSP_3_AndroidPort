@@ -76,10 +76,8 @@ public class PosicionActual extends FragmentActivity implements OnMapReadyCallba
             return;
         }
         Location location = service.getLastKnownLocation(provider);
-
         LatLng userLocation = new LatLng(location.getLatitude(),location.getLongitude());
         mMap.moveCamera(CameraUpdateFactory.newLatLng(userLocation));
         mMap.setMinZoomPreference(15);
-        mMap.addMarker(new MarkerOptions().position(userLocation).title("Ubicacion actual inicial"));
     }
 }

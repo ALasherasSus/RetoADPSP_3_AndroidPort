@@ -12,21 +12,18 @@
         <entry key="..\:/Users/Admin/AndroidStudioProjects/RetoADPSP_3_AndroidPort/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.21770833333333334" />
         <entry key="..\:/Users/David/eclipse-workspace/RetoADPSP_3_AndroidPort/app/src/main/res/layout/activity_conexion_bbdd.xml" value="0.21302083333333333" />
         <entry key="..\:/Users/David/eclipse-workspace/RetoADPSP_3_AndroidPort/app/src/main/res/layout/activity_consulta_bd.xml" value="0.21302083333333333" />
-        <entry key="..\:/Users/David/eclipse-workspace/RetoADPSP_3_AndroidPort/app/src/main/res/layout/activity_elorrieta.xml" value="0.2109375" />
-        <entry key="..\:/Users/David/eclipse-workspace/RetoADPSP_3_AndroidPort/app/src/main/res/layout/activity_gps.xml" value="0.1953125" />
-        <entry key="..\:/Users/David/eclipse-workspace/RetoADPSP_3_AndroidPort/app/src/main/res/layout/activity_localidades.xml" value="0.358695652173913" />
-        <entry key="..\:/Users/David/eclipse-workspace/RetoADPSP_3_AndroidPort/app/src/main/res/layout/activity_menu_bd.xml" value="0.358695652173913" />
         <entry key="..\:/Users/David/eclipse-workspace/RetoADPSP_3_AndroidPort/app/src/main/res/layout/activity_menu_principal.xml" value="0.1947463768115942" />
-        <entry key="..\:/Users/David/eclipse-workspace/RetoADPSP_3_AndroidPort/app/src/main/res/layout/activity_municipio.xml" value="0.33" />
-        <entry key="..\:/Users/David/eclipse-workspace/RetoADPSP_3_AndroidPort/app/src/main/res/layout/activity_pueblo.xml" value="0.358695652173913" />
-        <entry key="..\:/Users/David/eclipse-workspace/RetoADPSP_3_AndroidPort/app/src/main/res/layout/activity_subir_foto_bd.xml" value="0.21302083333333333" />
         <entry key="..\:/Users/David/eclipse-workspace/RetoADPSP_3_AndroidPort/app/src/main/res/xml/file_paths.xml" value="0.1762917933130699" />
         <entry key="..\:/Users/in2dam/AndroidStudioProjects/RetoADPSP_3_AndroidPort/app/src/main/res/layout/activity_conexion_bbdd.xml" value="0.25" />
         <entry key="..\:/Users/in2dam/AndroidStudioProjects/RetoADPSP_3_AndroidPort/app/src/main/res/layout/activity_consulta_bd.xml" value="0.3432971014492754" />
+        <entry key="..\:/Users/in2dam/AndroidStudioProjects/RetoADPSP_3_AndroidPort/app/src/main/res/layout/activity_elorrieta.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/in2dam/AndroidStudioProjects/RetoADPSP_3_AndroidPort/app/src/main/res/layout/activity_gps.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/in2dam/AndroidStudioProjects/RetoADPSP_3_AndroidPort/app/src/main/res/layout/activity_main.xml" value="0.2930253623188406" />
         <entry key="..\:/Users/in2dam/AndroidStudioProjects/RetoADPSP_3_AndroidPort/app/src/main/res/layout/activity_menu_bd.xml" value="0.33" />
         <entry key="..\:/Users/in2dam/AndroidStudioProjects/RetoADPSP_3_AndroidPort/app/src/main/res/layout/activity_menu_principal.xml" value="0.2930253623188406" />
+        <entry key="..\:/Users/in2dam/AndroidStudioProjects/RetoADPSP_3_AndroidPort/app/src/main/res/layout/activity_mostrar_top.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/in2dam/AndroidStudioProjects/RetoADPSP_3_AndroidPort/app/src/main/res/layout/activity_posicion_actual.xml" value="0.2930253623188406" />
+        <entry key="..\:/Users/in2dam/AndroidStudioProjects/RetoADPSP_3_AndroidPort/app/src/main/res/layout/activity_pueblo.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/in2dam/AndroidStudioProjects/RetoADPSP_3_AndroidPort/app/src/main/res/layout/activity_subir_foto_bd.xml" value="0.22" />
       </map>
     </option>

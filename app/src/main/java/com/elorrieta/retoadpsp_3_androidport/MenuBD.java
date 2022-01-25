@@ -161,4 +161,19 @@ public class MenuBD extends AppCompatActivity {
         }
     }
 
+    public void Top(View view){
+        Intent i =new Intent(this,mostrarTop.class);
+        i.putExtra("servidor", servidor);
+        i.putExtra("puerto", puerto);
+        i.putExtra("usuario", user);
+        i.putExtra("password", password);
+        i.putExtra("datos", datos);
+
+        try {
+            startActivity(i);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
 }
