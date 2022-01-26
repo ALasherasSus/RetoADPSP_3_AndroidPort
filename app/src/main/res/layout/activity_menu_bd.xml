@@ -15,7 +15,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="176dp" />
+        app:layout_constraintTop_toBottomOf="@+id/btnTop" />
 
     <Button
         android:id="@+id/btnCamara"
@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:onClick="SubirFoto"
-        android:text="SubirFoto"
+        android:text="Subir Foto"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -57,7 +57,6 @@
         android:layout_marginTop="128dp"
         android:onClick="Top"
         android:text="Top"
-        app:layout_constraintBottom_toTopOf="@+id/btnConsulta"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"

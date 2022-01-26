@@ -18,7 +18,6 @@ public class TopAsincrono extends AsyncTask<String[],Void,String[]>
     private ResultSet rs = null;
 
 
-    String contadortop;
 
 
     @SuppressLint("LongLogTag")
@@ -35,7 +34,6 @@ public class TopAsincrono extends AsyncTask<String[],Void,String[]>
         String BD = datos[0][2];
         String USUARIO = datos[0][3];
         String PASSWORD = datos[0][4];
-        String TIPO=datos[0][6];
 
         try{
             /*Establecemos la conexión con el Servidor MySQL indicándole la cadena de conexión formada por la dirección ip,
@@ -59,16 +57,10 @@ public class TopAsincrono extends AsyncTask<String[],Void,String[]>
                 //Búcle encargado de recorrer y mostrar los resultados a partir de la consulta ejecutada
 
 
-                    while (rs.next()) {
-                        String resultado = rs.getString(1);
-
-                        rs = st.executeQuery("SELECT Pueblo.Nombre,count(*) as cuenta FROM `estaciones`,pueblo where pueblo.idPueblo=estaciones.Pueblo group by Pueblo order by cuenta DESC limit 5");
-                        contadortop=rs.getString(1);
-
-
-
-
-                    }
+                while (rs.next()) {
+                    resultadoSQL += "Nombre: " + rs.getString(1) + "   Nº Estaciones: " + rs.getString(2)+"\n"
+                    +"*****************************\n";
+                }
 
                 //Variable que almacenará el número de columnas obtenidas de la consulta Transact-SQL
                 numColumnas = rs.getMetaData().getColumnCount();
@@ -79,8 +71,7 @@ public class TopAsincrono extends AsyncTask<String[],Void,String[]>
                 totalResultadoSQL = new String[]
                         {
                                 resultadoSQL,
-                                String.valueOf(numFilas),
-                                String.valueOf(numColumnas)
+
                         };
             }
 

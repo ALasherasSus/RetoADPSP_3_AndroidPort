@@ -9,8 +9,10 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -30,13 +32,15 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Hashtable;
 import java.util.Map;
 
 public class SubirFotoBD extends AppCompatActivity {
 
-
+    Button btnCompartir;
     private Button btnSubir;
     private ImageView imageView;
     Bitmap bitmap;
@@ -49,7 +53,7 @@ public class SubirFotoBD extends AppCompatActivity {
     String bd;
     String currentPhotoPath;
     byte[] byteArray;
-
+    Uri uri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +70,7 @@ public class SubirFotoBD extends AppCompatActivity {
         password=(bundle.getString("password"));
         bd=(bundle.getString("datos"));
         currentPhotoPath=(bundle.getString("url"));
-        Uri uri=(bundle.getParcelable("uri"));
+        uri=(bundle.getParcelable("uri"));
 
         try {
             bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(),uri);
@@ -75,7 +79,12 @@ public class SubirFotoBD extends AppCompatActivity {
         }
         imageView.setImageBitmap(bitmap);
 
-
+        Button btnCompartir = ((Button)findViewById(R.id.btncompartir));
+        btnCompartir.setOnClickListener(
+                new View.OnClickListener() {
+                    public void onClick(View view) {
+                        SharePic();
+                    }});
 
 
 
@@ -125,7 +134,15 @@ public class SubirFotoBD extends AppCompatActivity {
 
 
 
+    private void SharePic() {
 
+        //compartir imagen
+        Intent share = new Intent(Intent.ACTION_SEND);
+        share.setType("image/jpeg");
+        share.putExtra(Intent.EXTRA_STREAM, uri);
+        share.putExtra(Intent.EXTRA_TEXT, "Mi imagen");
+        startActivity(Intent.createChooser(share, "Compartir imagen"));
+        }
 
 
 }

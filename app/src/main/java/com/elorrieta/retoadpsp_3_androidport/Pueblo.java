@@ -40,11 +40,12 @@ public class Pueblo extends Activity {
 
 
 
-        if (Consulta.equals("Select Nombre from Pueblo")){
-            Tipo="Pueblo";
+        if (Consulta.equals("Select Nombre from Pueblo")) {
+
+        }else if(Consulta.equals("Select Nombre from Estaciones")){
+            Tipo = "Estaciones";
         }else{
-            Tipo="Poblacion";
-            gps.setEnabled(false);
+
         }
 
 
@@ -61,10 +62,21 @@ public class Pueblo extends Activity {
     {
         ArrayList<String> NombreP = new ArrayList<>();
         String consulta;
-        if (Consulta.equals("Select Nombre from Pueblo")){
-            consulta ="Select * from Pueblo where Nombre= '"+Pueblo+"'";
+        if (Consulta.equals("Select Nombre from Pueblo")) {
+            consulta = "Select * from Pueblo where Nombre= '" + Pueblo + "'";
+            Tipo = "Pueblo";
+        }else if(Consulta.equals("Select Nombre from Estaciones")){
+            consulta = "SELECT * FROM `diario`,estaciones where diario.idEstacion=estaciones.idEstacion and estaciones.Nombre='" + Pueblo + "'";
+                Tipo = "CONSULTA";
+            gps.setEnabled(false);
+
+        }else if(Consulta.equals("Select Nombre from Espacionatural")){
+            consulta = "Select * from Espacionatural where Nombre= '"+Pueblo+"'";
+            Tipo = "espacio";
         }else{
             consulta ="Select * from Provincia where Nombre= '"+Pueblo+"'";
+            Tipo="Poblacion";
+            gps.setEnabled(false);
         }
 
         String[] resultadoSQL = null;

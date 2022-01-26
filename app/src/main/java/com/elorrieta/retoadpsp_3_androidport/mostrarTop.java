@@ -35,16 +35,18 @@ public class mostrarTop extends AppCompatActivity {
         pueblos = (Button)findViewById(R.id.btnmunicipios);
         provincias = (Button)findViewById(R.id.btnprovincias);
 
+        edResultado = (EditText) findViewById(R.id.edResultado);
+
     }
     public void Consultapueblo(View view)
     {
-        Consulta="Select idPueblo from pueblo";
+        Consulta="SELECT Pueblo.Nombre,count(*) as cuenta FROM `estaciones`,pueblo where pueblo.idPueblo=estaciones.Pueblo group by Pueblo order by cuenta DESC limit 5";
         mostrarResultados();
     }
 
     public void Consultaprovincias(View view)
     {
-        Consulta="Select idProvincia from provincias";
+        Consulta="SELECT Provincia.Nombre,count(*) as cuenta FROM `estaciones`,provincia where provincia.idProvincia=estaciones.Provincia group by Provincia order by cuenta DESC limit 5";
         mostrarResultados();
     }
 
@@ -77,10 +79,9 @@ public class mostrarTop extends AppCompatActivity {
                 Toast.makeText(mostrarTop.this,"Conexión Establecida", Toast.LENGTH_LONG).show();
 
                 String resultadoConsulta = resultadoSQL[0];
-                String numFilas = resultadoSQL[1];
-                String numColumnas = resultadoSQL[2];
-                edResultado.setText(resultadoConsulta + "Número de filas devueltas: " +
-                        numFilas + "\nNúmero de columnas devueltas: " + numColumnas);
+
+
+                edResultado.setText(resultadoConsulta);
             }
         }catch(Exception ex)
         {

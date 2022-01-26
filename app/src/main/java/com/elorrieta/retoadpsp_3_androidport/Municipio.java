@@ -76,7 +76,14 @@ public class Municipio extends AppCompatActivity {
         mostrarResultados();
     }
 
-
+    public void Estacion(View view){
+        Consulta="Select Nombre from Estaciones";
+        mostrarResultados();
+    }
+    public void Espacio(View view){
+        Consulta="Select Nombre from Espacionatural";
+        mostrarResultados();
+    }
     public void mostrarResultados()
     {
 

@@ -5,16 +5,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ConsultaBD">
+
     <FrameLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:context=".ConsultaBD"
-        tools:ignore="MergeRootFrame" >
+        tools:ignore="MergeRootFrame">
 
         <TableLayout
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="568dp"
             android:layout_marginLeft="15dip">
 
             <TableRow
@@ -39,14 +44,14 @@
                 <TableRow
                     android:id="@+id/tableRow8"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" >
+                    android:layout_height="wrap_content">
 
                     <TextView
                         android:id="@+id/textView3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/servidor"
-                        android:layout_weight="0" />
+                        android:layout_weight="0"
+                        android:text="@string/servidor" />
 
                     <TextView
                         android:id="@+id/txtServidor"
@@ -59,7 +64,7 @@
                 <TableRow
                     android:id="@+id/tableRow9"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" >
+                    android:layout_height="wrap_content">
 
                     <TextView
                         android:id="@+id/textView5"
@@ -78,7 +83,7 @@
                 <TableRow
                     android:id="@+id/tableRow10"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" >
+                    android:layout_height="wrap_content">
 
                     <TextView
                         android:id="@+id/textView7"
@@ -104,19 +109,19 @@
                         android:id="@+id/textViewPass"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/pass"
-                        android:layout_weight="1" />
+                        android:layout_weight="1"
+                        android:text="@string/pass" />
 
                     <EditText
                         android:id="@+id/edPasswordCon"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:editable="true"
                         android:ems="10"
                         android:enabled="false"
                         android:hint="@string/vacio"
                         android:inputType="textPassword"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:editable="true">
+                        android:textAppearance="?android:attr/textAppearanceSmall">
 
                     </EditText>
 
@@ -125,7 +130,7 @@
                 <TableRow
                     android:id="@+id/tableRow2"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" >
+                    android:layout_height="wrap_content">
 
                     <TextView
                         android:id="@+id/textView6"
@@ -144,15 +149,15 @@
                 <TableRow
                     android:id="@+id/tableRow3"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" >
+                    android:layout_height="wrap_content">
 
                     <EditText
                         android:id="@+id/edConsulta"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_weight="2"
                         android:ems="10"
                         android:hint="@string/consulta"
-                        android:layout_weight="2"
                         android:onClick="consultaSelect" />
 
                 </TableRow>
@@ -160,7 +165,7 @@
                 <TableRow
                     android:id="@+id/tableRow4"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" >
+                    android:layout_height="wrap_content">
 
                     <Button
                         android:id="@+id/btnEjecutar"
@@ -171,7 +176,6 @@
                         android:text="@string/botonConsulta" />
 
 
-
                 </TableRow>
             </TableLayout>
 
@@ -179,20 +183,22 @@
                 android:id="@+id/tableRow6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
+
                 <ScrollView
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:scrollbars="vertical">
+
                     <EditText
+                        android:id="@+id/edResultado"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:inputType="textMultiLine"
-                        android:ems="15"
-                        android:id="@+id/edResultado"
                         android:background="#8438fdff"
-                        android:textStyle="bold|italic"
+                        android:editable="false"
+                        android:ems="15"
                         android:hint="@string/resultado"
-                        android:editable="false" />
+                        android:inputType="textMultiLine"
+                        android:textStyle="bold|italic" />
 
                 </ScrollView>
 

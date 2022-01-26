@@ -55,21 +55,21 @@ public class ConsultasAsincrona extends AsyncTask<String[],Void,String[]>
 
                 if(TIPO.equals("CONSULTA")) {
                     while (rs.next()) {
-                        resultadoSQL += "ID Diario-> " + rs.getString(1) +
-                                "\nID Estacion-> " + rs.getString(2) +
-                                "\nFecha-> " + rs.getString(3) +
-                                "\n NO " + rs.getString(4) +
-                                "\n NO2 " + rs.getString(5) +
-                                "\n NOX " + rs.getString(6) +
-                                "\n PM10 " + rs.getString(7) +
-                                "\n 03 " + rs.getString(8) +
-                                "\n 038H " + rs.getString(9) +
-                                "\n PM25 " + rs.getString(10) +
-                                "\n S02 " + rs.getString(11) +
+                        resultadoSQL += "ID Diario= " + rs.getString(1) +
+                                "\nID Estacion= " + rs.getString(2) +
+                                "\nFecha= " + rs.getString(3) +
+                                "\n NO= " + rs.getString(4) +
+                                "\n NO2= " + rs.getString(5) +
+                                "\n NOX= " + rs.getString(6) +
+                                "\n PM10= " + rs.getString(7) +
+                                "\n 03= " + rs.getString(8) +
+                                "\n 038H= " + rs.getString(9) +
+                                "\n PM25= " + rs.getString(10) +
+                                "\n S02= " + rs.getString(11) +
                                 "\n ***********************" +
                                 "\n";
                     }
-                }else if(TIPO.equals("Pueblo")){
+                }else if(TIPO.equals("Pueblo")) {
                     while (rs.next()) {
                         resultadoSQL += "Nombre: " + rs.getString(1) +
                                 "\nDescripcion: " + rs.getString(2) +
@@ -79,7 +79,26 @@ public class ConsultasAsincrona extends AsyncTask<String[],Void,String[]>
                                 "\n ***********************" +
                                 "\n";
                     }
-                }else{
+                }else if(TIPO.equals("espacio")) {
+                        while (rs.next()) {
+                            resultadoSQL += "IdEspacioNatural: " + rs.getString(1) +
+                                    "\nNombre: " + rs.getString(2) +
+                                    "\nDescripcion: " + rs.getString(3) +
+                                    "\nidProvincia:" + rs.getString(4) +
+                                    "\nidPueblo:" + rs.getString(5) +
+                                    "\n ***********************" +
+                                    "\n";
+                        }
+                    }else if(TIPO.equals("espacio")) {
+                    while (rs.next()) {
+                        resultadoSQL += "IdEspacioNatural: " + rs.getString(1) +
+                                "\nNombre: " + rs.getString(2) +
+                                "\nTipo:" + rs.getString(4) +
+                                "\nProvincia:" + rs.getString(5) +
+                                "\n ***********************" +
+                                "\n";
+                        }
+                    }else{
                     while (rs.next()) {
                         resultadoSQL += "idProvincia " + rs.getString(1) +
                                 "\nNombre " + rs.getString(2) +
